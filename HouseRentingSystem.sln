@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11527.330
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseRentingSystem", "HouseRentingSystem\HouseRentingSystem.csproj", "{97D197AD-4CB8-4425-A9D9-4BB3C64A2C36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HourseRentingSystem.Data", "HourseRentingSystem.Data\HourseRentingSystem.Data.csproj", "{96702E44-B5B5-4A9B-9927-6F33152D5B3C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97D197AD-4CB8-4425-A9D9-4BB3C64A2C36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97D197AD-4CB8-4425-A9D9-4BB3C64A2C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97D197AD-4CB8-4425-A9D9-4BB3C64A2C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97D197AD-4CB8-4425-A9D9-4BB3C64A2C36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96702E44-B5B5-4A9B-9927-6F33152D5B3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96702E44-B5B5-4A9B-9927-6F33152D5B3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96702E44-B5B5-4A9B-9927-6F33152D5B3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96702E44-B5B5-4A9B-9927-6F33152D5B3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {243A69F4-62D0-4DD6-BF5F-09431F7842AC}
+	EndGlobalSection
+EndGlobal
