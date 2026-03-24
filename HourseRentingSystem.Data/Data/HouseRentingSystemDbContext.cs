@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using HouseRentingSystem.Data.Configuration;
 
 namespace HouseRentingSystem.Data.Data
 {
@@ -21,6 +22,8 @@ namespace HouseRentingSystem.Data.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new HouseConfiguration());
             base.OnModelCreating(builder);
         }
     }

@@ -9,7 +9,8 @@ namespace HouseRentingSystem.Data.Data.Entities
 {
     public class Agent
     {
-        public Guid Id { get; init; } = Guid.NewGuid();
+        [Key]
+        public int Id { get; init; }
 
         [Required]
         [MaxLength(PhoneNumberMaxLength)]
@@ -20,6 +21,6 @@ namespace HouseRentingSystem.Data.Data.Entities
 
         public IdentityUser User { get; init; } = null!;
 
-        public IEnumerable<House> Houses { get; init; } = new List<House>();
+        public IEnumerable<House> ManagedHouses { get; init; } = new List<House>();
     }
 }

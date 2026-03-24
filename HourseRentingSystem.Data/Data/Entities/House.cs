@@ -29,6 +29,10 @@ namespace HouseRentingSystem.Data.Data.Entities
         [Required]
         public string ImageUrl { get; set; } = null!;
 
+        [Required]
+        [MaxLength(AddressMaxLength)]
+        public string Address { get; set; } = null!;
+
         [Range(0,2000)]
         [Column(TypeName = "decimal(18,2)")]
         public decimal PricePerMonth { get; set; }
