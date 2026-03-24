@@ -24,6 +24,7 @@ namespace HouseRentingSystem.Data.Data
         {
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new HouseConfiguration());
+            builder.ApplyConfiguration(new AgentConfiguration());
             base.OnModelCreating(builder);
         }
     }

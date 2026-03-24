@@ -13,6 +13,10 @@ namespace HouseRentingSystem.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<House> builder)
         {
+            builder.HasOne(h => h.Category)
+                .WithMany(c => c.Houses)
+                .HasForeignKey(h => h.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
             builder.HasData(SeedHouses());
         }
 

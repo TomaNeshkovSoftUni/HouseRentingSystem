@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using HouseRentingSystem.Data.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace HouseRentingSystem.Data.Configuration
 {
-    public class CategoryConfiguration
+    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder
-                .HasData(SeedCategories());
+            builder.HasData(SeedCategories());
         }
 
         private IEnumerable<Category> SeedCategories()
