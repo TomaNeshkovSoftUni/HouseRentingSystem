@@ -5,7 +5,7 @@ VisualStudioVersion = 18.3.11527.330
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseRentingSystem", "HouseRentingSystem\HouseRentingSystem.csproj", "{97D197AD-4CB8-4425-A9D9-4BB3C64A2C36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HourseRentingSystem.Data", "HourseRentingSystem.Data\HourseRentingSystem.Data.csproj", "{96702E44-B5B5-4A9B-9927-6F33152D5B3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseRentingSystem.Data", "HourseRentingSystem.Data\HouseRentingSystem.Data.csproj", "{96702E44-B5B5-4A9B-9927-6F33152D5B3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
