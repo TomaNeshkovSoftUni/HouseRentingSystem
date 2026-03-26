@@ -11,7 +11,7 @@ namespace HouseRentingSystem.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Agent> builder)
         {
-            builder.HasData(SeedAgents());
+            // builder.HasData(SeedAgents());
         }
 
         public IEnumerable<Agent> SeedAgents()

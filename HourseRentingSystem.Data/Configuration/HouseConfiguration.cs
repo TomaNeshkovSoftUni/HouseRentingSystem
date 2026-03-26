@@ -17,7 +17,7 @@ namespace HouseRentingSystem.Data.Configuration
                 .WithMany(c => c.Houses)
                 .HasForeignKey(h => h.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
-            builder.HasData(SeedHouses());
+            // builder.HasData(SeedHouses());
         }
 
         public IEnumerable<House> SeedHouses()
