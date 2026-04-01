@@ -1,4 +1,5 @@
-﻿@* @model HouseRentingSystem.App.Models.LoginViewModel
+﻿﻿
+@model HouseRentingSystem.App.Models.LoginViewModel
 
 @{
     ViewData["Title"] = "Login";
@@ -17,6 +18,12 @@
                         <label asp-for="Username" class="form-label"></label>
                         <input asp-for="Username" class="form-control" />
                         <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
@@ -43,4 +50,4 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-} *@
+}

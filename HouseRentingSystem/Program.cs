@@ -5,51 +5,63 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HouseRentingSystem
 {
-	public class Program
-	{
-		public static void Main(string[] args)
-		{
-			var builder = WebApplication.CreateBuilder(args);
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
 
-			// Add services to the container.
-			var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            // Add services to the container.
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<HouseRentingSystemDbContext>(opt => opt.UseSqlServer(connectionString));
 
-			builder.Services
-				.AddDbContext<HouseRentingSystemDbContext>(opt => opt.UseSqlServer(connectionString));
 
-			builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-				.AddEntityFrameworkStores<HouseRentingSystemDbContext>()
-				.AddDefaultTokenProviders();
 
-			builder.Services.ConfigureApplicationCookie(opt =>
-			{
-				opt.LoginPath = "/User/Login";
-				opt.LogoutPath = "/User/AccessDenied";
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
+                opt =>
+                {
+                    opt.User.RequireUniqueEmail = true;
+                    opt.Password.RequireNonAlphanumeric = false;
+                    opt.Password.RequiredLength = 6;
+                    opt.Password.RequireLowercase = false;
+                    opt.Password.RequireUppercase = false;
+                    opt.SignIn.RequireConfirmedEmail = false;
+                }
+            )
+                .AddEntityFrameworkStores<HouseRentingSystemDbContext>()
+                .AddDefaultTokenProviders();
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LogoutPath = "/User/Login";
+                options.AccessDeniedPath = "/User/AccessDenied";
             });
 
             builder.Services.AddControllersWithViews();
 
-			var app = builder.Build();
+            var app = builder.Build();
 
-			// Configure the HTTP request pipeline.
-			if (!app.Environment.IsDevelopment())
-			{
-				app.UseExceptionHandler("/Home/Error");
-				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-				app.UseHsts();
-			}
+            // Configure the HTTP request pipeline.
+            if (!app.Environment.IsDevelopment())
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
 
-			app.UseHttpsRedirection();
-			app.UseRouting();
+            app.UseHttpsRedirection();
+            app.UseRouting();
 
-			app.UseAuthentication();
-			app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
-			app.MapControllerRoute(
-				name: "default",
-				pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.MapStaticAssets();
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}")
+                .WithStaticAssets();
 
-			app.Run();
-		}
-	}
+            app.Run();
+        }
+    }
 }
