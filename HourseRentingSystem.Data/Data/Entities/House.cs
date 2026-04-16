@@ -38,8 +38,10 @@ namespace HouseRentingSystem.Data.Data.Entities
         public decimal PricePerMonth { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; } = null!;
-        public int AgentId { get; set; }
-        public Agent Agent { get; set; } = null!;
+
+        [ForeignKey(nameof(Agent))]
+        public string AgentId { get; set; }
+        public ApplicationUser Agent { get; set; } = null!;
         public string? RenterId { get; set; }
         public ApplicationUser? Renter { get; set; }
     }

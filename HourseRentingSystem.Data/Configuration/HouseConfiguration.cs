@@ -13,17 +13,17 @@ namespace HouseRentingSystem.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<House> builder)
         {
-            builder
-              .HasOne(h => h.Category)
-              .WithMany(c => c.Houses)
-              .HasForeignKey(h => h.CategoryId)
-              .OnDelete(DeleteBehavior.Restrict);
-            builder
-                .HasOne(h => h.Agent)
-                .WithMany(a => a.ManagedHouses)
-                .HasForeignKey(h => h.AgentId)
-                .OnDelete(DeleteBehavior.Restrict);
-            builder.HasData(SeedHouses());
+            //builder
+            //  .HasOne(h => h.Category)
+            //  .WithMany(c => c.Houses)
+            //  .HasForeignKey(h => h.CategoryId)
+            //  .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .HasOne(h => h.Agent)
+            //    .WithMany(a => a.ManagedHouses)
+            //    .HasForeignKey(h => h.AgentId)
+            //    .OnDelete(DeleteBehavior.Restrict);
+            //builder.HasData(SeedHouses());
         }
 
         public IEnumerable<House> SeedHouses()
