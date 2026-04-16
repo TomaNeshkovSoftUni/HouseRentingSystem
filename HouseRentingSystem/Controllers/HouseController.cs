@@ -1,18 +1,20 @@
-﻿using HouseRentingSystem.App.Models;
-using HouseRentingSystem.App.Models.House;
+﻿using HouseRentingSystem.App.Models.House;
+using HouseRentingSystem.App.Models.House.Helpers;
+using HouseRentingSystem.Data.Data;
 using HouseRentingSystem.Data.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
+
 namespace HouseRentingSystem.App.Controllers
 {
     public class HouseController : Controller
     {
-        private readonly HouseRentingDbContext context;
+        private readonly HouseRentingSystemDbContext context;
 
-        public HouseController(HouseRentingDbContext context)
+        public HouseController(HouseRentingSystemDbContext context)
         {
             this.context = context;
         }
@@ -21,7 +23,7 @@ namespace HouseRentingSystem.App.Controllers
         {
             var housesViewModel = await context.Houses
             .AsNoTracking()
-            .Select((TEntity h) => new Models.House.HousesViewModel
+            .Select((h) => new Models.House.HousesViewModel
             {
                 Id = h.Id,
                 Name = h.Title,
@@ -123,8 +125,8 @@ namespace HouseRentingSystem.App.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var houses = context.Houses
-                .Where((object h) => h.AgentId == userId)
-                .Select((object h) => new Models.House.HousesViewModel
+                .Where(h => h.AgentId == userId)
+                .Select(h => new Models.House.HousesViewModel
                 {
                     Address = h.Address,
                     ImageUrl = h.ImageUrl,
