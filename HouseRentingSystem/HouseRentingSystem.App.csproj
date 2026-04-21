@@ -19,8 +19,4 @@
     <ProjectReference Include="..\HourseRentingSystem.Data\HouseRentingSystem.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Middlewares\" />
-  </ItemGroup>
-
 </Project>

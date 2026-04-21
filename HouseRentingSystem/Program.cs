@@ -1,3 +1,4 @@
+using HouseRentingSystem.App.Middlewares;
 using HouseRentingSystem.Data.Data;
 using HouseRentingSystem.Data.Data.Entities;
 using Microsoft.AspNetCore.Identity;
@@ -24,7 +25,7 @@ namespace HouseRentingSystem
                     opt.User.RequireUniqueEmail = true;
                     opt.Password.RequireNonAlphanumeric = false;
                     opt.Password.RequiredLength = 6;
-                    opt.Password.RequireLowercase = false;  
+                    opt.Password.RequireLowercase = false;
                     opt.Password.RequireUppercase = false;
                     opt.SignIn.RequireConfirmedEmail = false;
                 }
@@ -62,6 +63,8 @@ namespace HouseRentingSystem
                 var statusCode = context.Response.StatusCode;
                 Console.WriteLine(statusCode);
             });
+
+            app.UseCustom();
             app.UseAuthentication();
             app.UseAuthorization();
 
