@@ -13,6 +13,7 @@ namespace HouseRentingSystem
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
             builder.Services.AddDbContext<HouseRentingSystemDbContext>(opt => opt.UseSqlServer(connectionString));
 
 
@@ -23,7 +24,7 @@ namespace HouseRentingSystem
                     opt.User.RequireUniqueEmail = true;
                     opt.Password.RequireNonAlphanumeric = false;
                     opt.Password.RequiredLength = 6;
-                    opt.Password.RequireLowercase = false;
+                    opt.Password.RequireLowercase = false;  
                     opt.Password.RequireUppercase = false;
                     opt.SignIn.RequireConfirmedEmail = false;
                 }
@@ -33,7 +34,7 @@ namespace HouseRentingSystem
 
             builder.Services.ConfigureApplicationCookie(options =>
             {
-                options.LogoutPath = "/User/Login";
+                options.LogoutPath = "/Auth/Login";
                 options.AccessDeniedPath = "/User/AccessDenied";
             });
 
@@ -51,7 +52,16 @@ namespace HouseRentingSystem
 
             app.UseHttpsRedirection();
             app.UseRouting();
-
+            app.Use(async (context, next) =>
+            {
+                //incoming request
+                var path = context.Request.Path;
+                Console.WriteLine(path);
+                await next();
+                //outgoing respons
+                var statusCode = context.Response.StatusCode;
+                Console.WriteLine(statusCode);
+            });
             app.UseAuthentication();
             app.UseAuthorization();
 

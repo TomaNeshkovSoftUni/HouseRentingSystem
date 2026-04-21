@@ -1,16 +1,35 @@
 ﻿﻿
-    @{
-        ViewData["Title"] = "Home Page";
-    }
+@model IEnumerable<HousesViewModel>
 
-    <div class="text-center">
-        @if (User.Identity.IsAuthenticated)
-        {
-            <h1 class="display-4">Welcome @User.FindFirstValue(ClaimTypes.Name)</h1>
-        }
-        else
-        {
-            <h1 class="display-4">Welcome</h1>
-        }
-        <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+    @foreach (var house in Model)
+    {
+        
+        <div class="card col-4" style="width: 20rem;">
+            <img class="card-img-top" src="@house.ImageUrl" alt="House Image">
+            <div class="card-body">
+                <h5 class="card-title">@house.Name</h5>
+                    <p class="card-text">@house.Address</p>
+            </div>
+            @if (house.CurrentUserIsOwner)
+            {
+            <div class="card-footer">
+            <button class="btn btn-primary"> Edit </button>
+            <a asp-controller="House" asp-action="Details" asp-route-Id="@house.Id" class="nav-link text-black card col-4" style="width: 20rem;">
+                Details
+            </a>
+                </div>
+                }
+            </div>
+        
+    }
+</div>
+<footer class="border-top footer text-muted">
+    <div class="container">
+        <a class="btn btn-primary" role="button" asp-controller="House" asp-action="CreateHouse">Register house</a>
     </div>
+</footer>

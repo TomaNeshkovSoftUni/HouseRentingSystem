@@ -43,6 +43,7 @@ namespace HouseRentingSystem.Data.Data.Entities
         public string AgentId { get; set; }
         public ApplicationUser Agent { get; set; } = null!;
         public string? RenterId { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public ApplicationUser? Renter { get; set; }
     }
 }

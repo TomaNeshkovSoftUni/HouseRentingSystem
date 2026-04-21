@@ -40,7 +40,7 @@ namespace HouseRentingSystem.Data.Configuration
                     ImageUrl = "https://nivel.bg/wp-content/uploads/2019/09/Shar-planina-2.jpg",
                     PricePerMonth = 100.00M,
                     CategoryId = 1,
-                    AgentId = 1
+                    AgentId = "1"
                 },
 
                 new House
@@ -52,7 +52,7 @@ namespace HouseRentingSystem.Data.Configuration
                     ImageUrl = "https://buditel.softuni.bg/wp-content/uploads/elementor/thumbs/IMG_0388-scaled-2-e1683035514550-q5vhxykej9cf1dmtu5osg2dohi4um9vtxe1quq2nj4.jpg",
                     PricePerMonth = 150.00M,
                     CategoryId = 2,
-                    AgentId = 1
+                    AgentId = "1"
                 },
 
                 new House
@@ -64,7 +64,7 @@ namespace HouseRentingSystem.Data.Configuration
                     ImageUrl = "https://clubcheta.com/wp-content/uploads/2023/02/%D0%95%D0%BB%D0%BC%D0%BE-2-580x387.jpg",
                     PricePerMonth = 50.00M,
                     CategoryId = 3,
-                    AgentId = 2
+                    AgentId = "2"
                 }
             };
         }
