@@ -42,6 +42,7 @@ namespace HouseRentingSystem
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+            app.UseTimeMeasurement();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
