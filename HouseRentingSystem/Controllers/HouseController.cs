@@ -108,8 +108,7 @@ namespace HouseRentingSystem.App.Controllers
                 Description = model.Description,
                 ImageUrl = model.ImageUrl,
                 PricePerMonth = model.PricePerMonth,
-                CategoryId = model.SelectedCategoryId,
-                AgentId = userId
+                CategoryId = model.SelectedCategoryId
             };
 
             context.Houses.Add(newHouse);
@@ -125,7 +124,7 @@ namespace HouseRentingSystem.App.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var houses = context.Houses
-                .Where(h => h.AgentId == userId)
+                //.Where(h => h.AgentId == userId)
                 .Select(h => new Models.House.HousesViewModel
                 {
                     Address = h.Address,

@@ -18,11 +18,11 @@ namespace HouseRentingSystem.Data.Configuration
         {
             return new Category[]
             {
-                //new Category { Id = 1, Name = "Cottage" },
-                //new Category { Id = 2, Name = "Single-Family" },
-                //new Category { Id = 3, Name = "Duplex" },
-                //new Category { Id = 4, Name = "Townhouse" },
-                //new Category { Id = 5, Name = "Apartment" }
+                new Category { Id = 1, Name = "Cottage" },
+                new Category { Id = 2, Name = "Single-Family house" },
+                new Category { Id = 3, Name = "Duplex" },
+                new Category { Id = 4, Name = "One Bedroom" },
+                new Category { Id = 5, Name = "Two Bedroom" }
             };
         }
     }
