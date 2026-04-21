@@ -40,7 +40,7 @@ namespace HouseRentingSystem.Data.Data.Entities
         public Category Category { get; set; } = null!;
 
         [ForeignKey(nameof(Agent))]
-        public int AgentId { get; set; }
+        public string AgentId { get; set; }
         public ApplicationUser Agent { get; set; } = null!;
         public string? RenterId { get; set; }
         public ApplicationUser? Renter { get; set; }

@@ -21,16 +21,19 @@ namespace HouseRentingSystem.App.Controllers
         [HttpGet]
         public async Task<IActionResult> AllHouses()
         {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var housesViewModel = await context.Houses
             .AsNoTracking()
-            .Select((h) => new Models.House.HousesViewModel
+            .Select(h => new HousesViewModel
             {
                 Id = h.Id,
                 Name = h.Title,
                 Address = h.Address,
-                ImageUrl = h.ImageUrl
+                ImageUrl = h.ImageUrl,
+                CurrentUserIsOwner = h.AgentId == currentUserId
             })
             .ToListAsync();
+            ViewBag.Title = "All houses";
             return View(housesViewModel);
         }
         [HttpGet]
@@ -58,7 +61,7 @@ namespace HouseRentingSystem.App.Controllers
         [Authorize]
         public async Task<IActionResult> CreateHouse()
         {
-            List<CategoryViewModel> houseCategories = await context.Categories
+            List<CategoryViewModel> ListOfCategories = await context.Categories
             .AsNoTracking()
             .Select(c => new CategoryViewModel
             {
@@ -66,6 +69,10 @@ namespace HouseRentingSystem.App.Controllers
                 Name = c.Name,
             })
             .ToListAsync();
+            var houseCategories = new HouseFormViewModel()
+            {
+                Categories = ListOfCategories
+            };
             return View(houseCategories);
         }
 
@@ -97,6 +104,7 @@ namespace HouseRentingSystem.App.Controllers
 
             if (addressExists)
             {
+                model.Categories = houseCategories;
                 ModelState.AddModelError("Address", "This address is already registered");
                 return View(model);
             }
@@ -108,7 +116,8 @@ namespace HouseRentingSystem.App.Controllers
                 Description = model.Description,
                 ImageUrl = model.ImageUrl,
                 PricePerMonth = model.PricePerMonth,
-                CategoryId = model.SelectedCategoryId
+                CategoryId = model.SelectedCategoryId,
+                AgentId = userId
             };
 
             context.Houses.Add(newHouse);
@@ -124,16 +133,17 @@ namespace HouseRentingSystem.App.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var houses = context.Houses
-                //.Where(h => h.AgentId == userId)
-                .Select(h => new Models.House.HousesViewModel
+                .Where(h => h.AgentId == userId)
+                .Select(h => new HousesViewModel
                 {
                     Address = h.Address,
                     ImageUrl = h.ImageUrl,
                     Name = h.Title,
-                    Id = h.Id
+                    Id = h.Id,
+                    CurrentUserIsOwner = true
                 })
                 .ToListAsync();
-
+            ViewBag.Title = "My houses";
             return View(nameof(AllHouses), houses);
         }
     }
