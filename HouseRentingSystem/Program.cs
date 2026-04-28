@@ -60,12 +60,12 @@ namespace HouseRentingSystem
                 var path = context.Request.Path;
                 Console.WriteLine(path);
                 await next();
-                //outgoing respons
+                //outgoing response
                 var statusCode = context.Response.StatusCode;
                 Console.WriteLine(statusCode);
             });
 
-            app.UseCustom();
+            //app.UseCustom();
             app.UseAuthentication();
             app.UseAuthorization();
 
